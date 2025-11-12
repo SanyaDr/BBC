@@ -1,42 +1,51 @@
+from turtledemo.paint import switchupdown
+
+
 def lvl_1():
-    print("\n\nLVL 1")
-    text_1 = "приВет МИР"
-    print("Оригинальная строка: ", text_1)
-    print("upper()  -> ", text_1.upper())
-    print("lower()  -> ", text_1.lower())
-    print("capitalize()  -> ", text_1.capitalize())
+    print("\n\nУровень 1!")
+    inp = input("Введите строку для работы: ")
+    print(inp, "+", "upper() ->", inp.upper())
+    print(inp, "+", "lower() ->", inp.lower())
+    print(inp, "+", "capitalize ->", inp.capitalize())
 
 def lvl_2():
-    print("\n\nLVL 2")
-    text_2 = ("Ботать круто! Очень круто!")
-    print("Оригинальная строка  -> ", text_2)
-    print("Вхождение первого 'круто'  -> ", text_2.find("круто"))
-    print("Замена 'круто' на что-то  -> ", text_2.replace("круто!", "грустно :(").replace("очень", "ваще"))
-    print("Количество букв 'О'  -> ", text_2.count('о'))
+    print("\n\nУровень 2!")
+    inp = input("Введите строку со словом 'круто': ")
+    print(inp, "+ find('круто') ->", inp.lower().find("круто"))
+    print(inp, "+ replace('круто', 'ужас') ->", inp.replace("круто", "ужас"))
+    print(inp, f"+ count('о') ->", inp.lower().count("о"))
 
 def lvl_3():
-    print("\n\nLVL 3")
-    text_3="1,2,3,4,5"
-    print("Оригинальная строка  -> ", text_3)
-    print("Разделение по запятым  -> ", text_3.split(","))
-    print("Соединение без запятых  -> ", "".join(text_3.split(",")))
+    print("\n\nУровень 3")
+    inp = input("Введите строку с символами ',': ")
+    print(f"'{inp}' + split(',') ->", inp.split(','))
+    print(f"'{inp}' + join(';') ->", ";".join(inp.split(',')))
 
 def lvl_4():
-    print("\n\nLVL 4")
-    text_4 = ["   1234#*   ", "  ABC#12   "]
-    i = 1
-    for txt in text_4:
-        print("Оригинальная строка  ->  '", txt, "'", sep='')
-        print("Вывод только чисел  -> ", [c for c in txt if c.isdigit()])
-        print("Вывод только букОв  -> ", [c for c in txt if c.isalpha()])
-        print("strip()  ->  '", txt.strip(), "'", sep='')
-        print("f-строки  -> ", f"{i}-я строка!")
-        print("format  -> ", "{first} круче чем {second}!!!".format(first=text_4[0].strip(), second=text_4[1].strip()))
-        print("---------------")
-        i += 1
+    print("\n\nУровень 4")
+    inp1 = input("Введите число: ")
+    inp2 = input("Введите строку: ")
+    inp3 = input("Введите строку с пробелами: ")
 
-print("Приветствуем на самой тупой игре")
-lvl_1()
-lvl_2()
-lvl_3()
-lvl_4()
+    print(f"'{inp1}' + isdigit() ->", inp1.isdigit())
+    print(f"'{inp2}' + isalpha() ->", inp2.isalpha())
+    print(f"'{inp3}' + strip() -> '{inp3.strip()}'")
+
+def lvl_5():
+    inp = input("Введите 'грязную' строку для нормализации: ")
+    print(f"'{inp}' ->", " ".join(inp.strip().lower().split(";")).capitalize())
+
+selectedLevel = -1
+while selectedLevel != 0:
+    selectedLevel = int(input("\nВведите уровень игры от 1 до 5. 0 - для выхода: "))
+    match selectedLevel:
+        case 1:
+            lvl_1()
+        case 2:
+            lvl_2()
+        case 3:
+            lvl_3()
+        case 4:
+            lvl_4()
+        case 5:
+            lvl_5()
