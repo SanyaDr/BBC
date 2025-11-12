@@ -1,23 +1,29 @@
 class Calculator:
-    def calc(self,a,b,c):
-        res = 0
+    def calc(self, a, b, c):
         match(c):
             case '+':
-                res = a + b
+                return a + b
             case '-':
-                res = a - b
+                return a - b
             case '*':
-                res = a * b
+                return a * b
             case '/':
                 if b == 0:
-                    print("ERROR: Деление на ноль!")
-                else:
-                    res = a / b
-        return res
+                    raise ValueError("ERROR: Деление на ноль!")
+                return a / b
+            case _:
+                raise ValueError(f"Неизвестная операция: {c}")
 
-a = float(input("Введите первое число:\n"))
-op = input("Введите операцию (+, -, *, /):\n")
-b = float(input("Введите второе число:\n"))
+try:
+    a = float(input("Введите первое число:\n"))
+    op = input("Введите операцию (+, -, *, /):\n")
+    b = float(input("Введите второе число:\n"))
 
+    calculator = Calculator()
+    result = calculator.calc(a, b, op)
+    print(f"Результат: {result}")
 
-print(Calculator.calc(None, a,b,op))
+except ValueError as e:
+    print(f"Ошибка: {e}")
+except Exception as e:
+    print(f"Неожиданная ошибка: {e}")
